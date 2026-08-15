@@ -200,21 +200,6 @@ header.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.5)}
   text-transform:uppercase;color:var(--encre-douce);
 }
 
-/* ===== Marquee ===== */
-.marquee{
-  border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);
-  background:var(--jaune);
-  overflow:hidden;padding:1.1rem 0;
-}
-.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
-.marquee-track span{
-  font-family:var(--display);font-size:1.5rem;letter-spacing:.05em;
-  text-transform:uppercase;color:var(--noir);
-  padding:0 1.6rem;display:inline-flex;align-items:center;gap:1.6rem;
-}
-.marquee-track span::after{content:"✦";font-size:.8rem}
-@keyframes scroll{to{transform:translateX(-50%)}}
-
 /* ===== Sections ===== */
 .section{padding:7rem 0}
 .section-head{margin-bottom:4rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
@@ -392,7 +377,6 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
 @media(prefers-reduced-motion:reduce){
   .hero-bg img{animation:none}
   .hero h1 .mot{transform:none;animation:none}
-  .marquee-track{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
@@ -437,13 +421,6 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
     <div class="hero-note">Palettes · lots · courses urgentes · navettes B2B</div>
   </div>
 </section>
-
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Fret &amp; palettes</span><span>Courses urgentes</span><span>Tournées régulières</span><span>Île-de-France</span><span>National</span><span>Transport direct</span>
-    <span>Fret &amp; palettes</span><span>Courses urgentes</span><span>Tournées régulières</span><span>Île-de-France</span><span>National</span><span>Transport direct</span>
-  </div>
-</div>
 
 <section class="section">
   <div class="container">
