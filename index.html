@@ -118,6 +118,15 @@ header.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.5)}
   transition:background .3s,transform .3s;
 }
 .nav-cta:hover{background:var(--jaune-vif);transform:translateY(-2px)}
+.nav-right{display:flex;align-items:center;gap:2.4rem}
+.nav-toggle{
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  width:46px;height:46px;padding:0;background:none;border:1px solid var(--ligne);cursor:pointer;
+}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--encre);transition:transform .3s,opacity .3s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ===== Hero ===== */
 .hero{
@@ -361,6 +370,48 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
 .reveal[data-delay="2"]{transition-delay:.2s}
 .reveal[data-delay="3"]{transition-delay:.3s}
 
+/* ===== Responsive mobile ===== */
+@media(max-width:860px){
+  .nav{height:64px}
+  .brand-mark{font-size:1.5rem}
+  .brand-sub{display:none}
+  .nav-toggle{display:flex}
+  .nav-right{
+    display:none;position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--noir);border-bottom:1px solid var(--ligne);
+    padding:0 20px 1.2rem;box-shadow:0 20px 40px rgba(0,0,0,.6);
+  }
+  .nav-right.open{display:flex}
+  .nav-links{flex-direction:column;gap:0;align-items:stretch}
+  .nav-links a{padding:1rem 0;font-size:.8rem;border-bottom:1px solid var(--ligne)}
+  .nav-links a::after{display:none}
+  .nav-cta{margin-top:1rem;text-align:center}
+}
+@media(max-width:640px){
+  .container{padding:0 20px}
+  .section{padding:4rem 0}
+  .section-head{margin-bottom:2.5rem}
+  .section-title{font-size:clamp(1.8rem,9vw,2.5rem)}
+  .hero{min-height:86vh}
+  .hero h1{font-size:clamp(2rem,9.5vw,3.4rem)}
+  .hero-inner{padding-bottom:2.2rem}
+  .hero-actions{gap:1rem}
+  .btn{padding:.85rem 1.4rem;font-size:.68rem}
+  .hero-note{font-size:.58rem}
+  .manifeste-side{padding:1.5rem}
+  .bloc .visuel{min-height:230px}
+  .bloc .corps{padding:1.8rem 1.4rem}
+  .bloc .corps h3{font-size:1.6rem}
+  .strip figure{flex:0 0 82%}
+  .step{padding:1.5rem 1.4rem}
+  .formulaire{padding:1.6rem 1.3rem}
+  .contact-grid{gap:2.5rem}
+  .coord-item{flex-direction:column;align-items:flex-start;gap:.2rem}
+  .coord-item b{text-align:left}
+  .footer-flex{flex-direction:column;gap:.6rem;padding:2.2rem 0}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-bg img{animation:none}
   .hero h1 .mot{transform:none;animation:none}
@@ -376,12 +427,17 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
       <span class="brand-mark">A2G<b>.</b></span>
       <span class="brand-sub">Transport routier de fret</span>
     </a>
-    <nav class="nav-links">
-      <a href="#activites">Activités</a>
-      <a href="#moyens">Moyens</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="nav-cta">Cotation</a>
+    <div class="nav-right" id="navMenu">
+      <nav class="nav-links">
+        <a href="#activites">Activités</a>
+        <a href="#moyens">Moyens</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Cotation</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -589,6 +645,22 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
   window.addEventListener('scroll',()=>{
     header.classList.toggle('scrolled', window.scrollY > 40);
   },{passive:true});
+
+  // Menu mobile
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  if(navToggle && navMenu){
+    navToggle.addEventListener('click',()=>{
+      const open = navMenu.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+    }));
+  }
 
   // Parallax léger sur les images de blocs
   if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
