@@ -268,7 +268,7 @@ header.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.5)}
 .bloc.inverse .visuel{order:2}
 
 /* ===== Bande photo défilante ===== */
-.strip{display:flex;gap:1.2rem;overflow-x:auto;padding:1rem 0 1.4rem;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--jaune) var(--carbone-2)}
+.strip{display:flex;gap:1.2rem;overflow-x:auto;padding:1rem 0 1.4rem;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--jaune) var(--carbone-2)}
 .strip::-webkit-scrollbar{height:6px}
 .strip::-webkit-scrollbar-thumb{background:var(--jaune)}
 .strip::-webkit-scrollbar-track{background:var(--carbone-2)}
@@ -391,6 +391,8 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
 @media(max-width:640px){
   .container{padding:0 20px}
   .section{padding:4rem 0}
+  .hero-bg img{animation:none;transform:scale(1.05)}
+  .bloc .visuel img{transition:none}
   .section-head{margin-bottom:2.5rem}
   .section-title{font-size:clamp(1.8rem,9vw,2.5rem)}
   .hero{min-height:86vh}
@@ -662,8 +664,8 @@ footer{background:var(--noir);border-top:1px solid var(--ligne)}
     }));
   }
 
-  // Parallax léger sur les images de blocs
-  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  // Parallax léger sur les images de blocs (desktop uniquement)
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches && window.innerWidth >= 768){
     const parallax = () => {
       document.querySelectorAll('.bloc .visuel img').forEach(img=>{
         const r = img.getBoundingClientRect();
