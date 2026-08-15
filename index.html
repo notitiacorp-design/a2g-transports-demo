@@ -6,367 +6,604 @@
 <title>A2G Transports — Transport routier de fret</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blanc:#faf8f4;
-  --beige:#efe9e0;
-  --beige-2:#e6ddd1;
-  --vert:#3d4e38;
-  --vert-fonce:#2d3a2a;
-  --vert-doux:#dde4d9;
-  --encre:#23201b;
-  --encre-douce:#4a443a;
-  --ligne:rgba(35,32,27,.16);
-  --serif:'Cormorant Garamond', Georgia, serif;
-  --sans:'Jost', 'Helvetica Neue', sans-serif;
+  --noir:#0c0c0c;
+  --carbone:#161616;
+  --carbone-2:#1e1e1e;
+  --ligne:#2a2a2a;
+  --encre:#f2efe8;
+  --encre-douce:#9a958c;
+  --jaune:#ffb800;
+  --jaune-vif:#ffcc00;
+  --display:'Anton', Impact, sans-serif;
+  --mono:'Space Mono', monospace;
+  --sans:'Archivo', 'Helvetica Neue', sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--sans);
   font-weight:300;
-  font-size:1.05rem;
-  line-height:1.75;
+  font-size:1.02rem;
+  line-height:1.7;
   color:var(--encre);
-  background:var(--blanc);
+  background:var(--noir);
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
-h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.12;color:var(--encre)}
-em{font-style:normal}
-a{color:var(--encre);text-decoration:none}
-.container{max-width:1160px;margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 28px}
 
-/* ---------- Header ---------- */
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(250,248,244,.98);
-  border-bottom:1px solid var(--ligne);
+/* ===== Éléments décoratifs industriels ===== */
+.hatch{
+  height:14px;
+  background:repeating-linear-gradient(45deg,var(--jaune) 0 16px,var(--noir) 16px 32px);
 }
-header.scrolled{box-shadow:0 1px 0 var(--ligne)}
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  height:72px;gap:2rem;
+.barcode{
+  height:26px;
+  background:repeating-linear-gradient(90deg,var(--encre) 0 2px,transparent 2px 5px,var(--encre) 5px 6px,transparent 6px 11px,var(--encre) 11px 14px,transparent 14px 16px);
+  opacity:.5;
 }
-.brand{display:flex;flex-direction:column;line-height:1.2}
-.brand-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:0}
-.brand-sub{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce);font-weight:400}
-.nav-links{display:flex;align-items:center;gap:2rem}
-.nav-links a{
-  font-size:.82rem;font-weight:400;letter-spacing:.08em;
-  position:relative;padding-bottom:2px;
+.tampon{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--jaune);
+  border:2px solid var(--jaune);
+  padding:.3rem .8rem;
+  transform:rotate(-4deg);
 }
-.nav-links a::after{
-  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
-  background:var(--vert);transform:scaleX(0);transform-origin:left;
-  transition:transform .35s cubic-bezier(.22,1,.36,1);
-}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-tel{font-size:.95rem;font-weight:500;color:var(--vert-fonce)}
-.nav-cta{
-  display:inline-block;padding:.6rem 1.4rem;
-  border:1px solid var(--vert);color:var(--vert-fonce);
-  font-size:.82rem;font-weight:400;letter-spacing:.06em;
-  transition:background .4s cubic-bezier(.22,1,.36,1),color .4s;
-}
-.nav-cta:hover{background:var(--vert);color:var(--blanc)}
-
-/* ---------- Hero ---------- */
-.hero{padding:7rem 0 5rem;border-bottom:1px solid var(--ligne)}
-.hero-kicker{
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--vert);font-weight:400;margin-bottom:1.8rem;
-}
-.hero h1{
-  font-size:clamp(2.6rem,6vw,4.6rem);
-  font-weight:500;letter-spacing:0;
-  max-width:18ch;line-height:1.06;
-}
-.hero-intro{
-  margin-top:2.2rem;
-  max-width:46ch;
-  font-size:1.15rem;
-  font-weight:300;
+.meta{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
   color:var(--encre-douce);
 }
-.hero-actions{margin-top:3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.btn{
-  display:inline-block;padding:.85rem 2rem;
-  background:var(--vert);color:var(--blanc);
-  font-size:.92rem;font-weight:400;letter-spacing:.05em;
-  transition:background .4s cubic-bezier(.22,1,.36,1),transform .35s;
-}
-.btn:hover{background:var(--vert-fonce);transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
-.hero-tel{
-  font-size:1.05rem;font-weight:400;color:var(--vert-fonce);
-  border-bottom:1px solid var(--vert);padding-bottom:1px;
-  transition:color .35s,border-color .35s;
-}
-.hero-tel:hover{color:var(--vert)}
 
-/* ---------- Bande navigation ---------- */
-.bande{padding:1.4rem 0;border-bottom:1px solid var(--ligne);background:var(--vert-doux)}
-.bande-inner{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.bande-label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vert);font-weight:500;white-space:nowrap}
-.bande-items{display:flex;flex-wrap:wrap;gap:.5rem 2.2rem;list-style:none}
-.bande-items a{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--encre);border-bottom:1px solid transparent;transition:border-color .35s,color .35s;padding-bottom:1px}
-.bande-items a:hover{color:var(--vert);border-color:var(--vert)}
-
-/* ---------- Sections ---------- */
-.section{padding:6rem 0}
-.section-head{margin-bottom:3.5rem;max-width:56ch}
-.section-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vert);margin-bottom:1rem}
-.section-title{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:500}
-
-/* Bloc accompagnement (image / texte alternés) */
-.accompagnement{display:grid;gap:2.5rem;align-items:start;margin-bottom:5rem}
-.accompagnement:last-child{margin-bottom:0}
-@media(min-width:900px){
-  .accompagnement{grid-template-columns:.9fr 1.1fr;gap:4rem}
-  .accompagnement.inverse{grid-template-columns:1.1fr .9fr}
-  .accompagnement.inverse .visuel{order:2}
+/* ===== Barre haute ===== */
+.topbar{
+  border-bottom:1px solid var(--ligne);
+  padding:.7rem 0;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--encre-douce);
 }
-.visuel{overflow:hidden}
-.visuel img{
+.topbar-inner{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.topbar .ref{color:var(--jaune)}
+
+/* ===== Header ===== */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(12,12,12,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--ligne);
+  transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:0 6px 30px rgba(0,0,0,.5)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:2rem}
+.brand{display:flex;align-items:baseline;gap:.8rem}
+.brand-mark{
+  font-family:var(--display);
+  font-size:1.9rem;
+  letter-spacing:.02em;
+  line-height:1;
+  color:var(--encre);
+}
+.brand-mark b{color:var(--jaune)}
+.brand-sub{
+  font-family:var(--mono);
+  font-size:.58rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--encre-douce);
+}
+.nav-links{display:flex;align-items:center;gap:2.4rem}
+.nav-links a{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--encre-douce);
+  position:relative;padding-bottom:4px;
+  transition:color .3s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;
+  background:var(--jaune);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.nav-links a:hover{color:var(--encre)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--noir);background:var(--jaune);
+  padding:.75rem 1.5rem;
+  transition:background .3s,transform .3s;
+}
+.nav-cta:hover{background:var(--jaune-vif);transform:translateY(-2px)}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  overflow:hidden;
+}
+.hero-bg img{
   width:100%;height:100%;object-fit:cover;
-  aspect-ratio:4/3;display:block;
+  animation:kenburns 22s ease-in-out infinite alternate;
 }
-.contenu h3{
-  font-size:1.7rem;font-weight:500;margin-bottom:1rem;
+@keyframes kenburns{from{transform:scale(1) translateY(0)}to{transform:scale(1.12) translateY(-2%)}}
+.hero-veil{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(12,12,12,.55) 0%,rgba(12,12,12,.2) 40%,rgba(12,12,12,.92) 100%);
 }
-.contenu p{color:var(--encre-douce);max-width:52ch}
-.details{
-  margin-top:1.6rem;display:grid;gap:.9rem;
-  border-left:1px solid var(--ligne);padding-left:1.4rem;
+.hero-inner{position:relative;z-index:2;padding:0 0 3rem}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.8rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--jaune);
+  margin-bottom:1.6rem;
 }
-.details strong{
-  display:block;font-weight:500;font-size:.74rem;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--vert);margin-bottom:.2rem;
+.hero-kicker::before{content:"";width:34px;height:2px;background:var(--jaune)}
+.hero h1{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(3.2rem,10vw,8.5rem);
+  line-height:.92;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  color:var(--encre);
+  margin-bottom:2rem;
 }
-.details div{font-size:.95rem;color:var(--encre)}
-.a-preciser{
-  margin-top:1.4rem;display:inline-block;
-  padding:.4rem .9rem;border:1px dashed var(--vert);
-  border-radius:999px;font-size:.68rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--vert);
+.hero h1 .ligne{display:block;overflow:hidden}
+.hero h1 .mot{
+  display:inline-block;
+  transform:translateY(110%);
+  animation:rise .9s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero h1 .mot.acc{color:var(--jaune)}
+.hero h1 .mot:nth-child(2){animation-delay:.12s}
+.hero h1 .mot:nth-child(3){animation-delay:.24s}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-actions{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--jaune);color:var(--noir);
+  padding:1rem 1.8rem;
+  transition:background .3s,transform .3s;
+}
+.btn:hover{background:var(--jaune-vif);transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;color:var(--encre);
+  border:1px solid var(--ligne);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:var(--jaune);color:var(--jaune)}
+.hero-note{
+  margin-top:1.8rem;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--encre-douce);
 }
 
-/* ---------- Contact ---------- */
-.contact{background:var(--beige);border-top:1px solid var(--ligne)}
+/* ===== Marquee ===== */
+.marquee{
+  border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);
+  background:var(--jaune);
+  overflow:hidden;padding:1.1rem 0;
+}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
+.marquee-track span{
+  font-family:var(--display);font-size:1.5rem;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--noir);
+  padding:0 1.6rem;display:inline-flex;align-items:center;gap:1.6rem;
+}
+.marquee-track span::after{content:"✦";font-size:.8rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== Sections ===== */
+.section{padding:7rem 0}
+.section-head{margin-bottom:4rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.section-kicker{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--jaune);margin-bottom:1rem;
+}
+.section-title{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.2rem,5vw,4rem);line-height:1;letter-spacing:.01em;
+}
+.section-title .acc{color:var(--jaune)}
+
+/* ===== Manifeste / intro ===== */
+.manifeste{display:grid;gap:3rem}
+@media(min-width:900px){.manifeste{grid-template-columns:1.1fr .9fr;gap:5rem}}
+.manifeste-texte p{font-size:1.15rem;color:var(--encre-douce);max-width:50ch;margin-bottom:1.4rem}
+.manifeste-texte p strong{color:var(--encre);font-weight:500}
+.manifeste-side{
+  border:1px solid var(--ligne);
+  padding:2rem;
+  background:var(--carbone);
+}
+.manifeste-side .ligne-wb{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding:.7rem 0;border-bottom:1px dashed var(--ligne);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.manifeste-side .ligne-wb span{color:var(--encre-douce)}
+.manifeste-side .ligne-wb b{color:var(--encre);font-weight:400}
+.manifeste-side .ligne-wb:last-child{border-bottom:none}
+
+/* ===== Blocs activités (grand format) ===== */
+.bloc{
+  display:grid;gap:0;
+  margin-bottom:4rem;
+  border:1px solid var(--ligne);
+  background:var(--carbone);
+}
+@media(min-width:900px){.bloc{grid-template-columns:1.15fr .85fr}}
+.bloc .visuel{position:relative;overflow:hidden;min-height:340px}
+.bloc .visuel img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1s cubic-bezier(.22,1,.36,1);
+}
+.bloc:hover .visuel img{transform:scale(1.06)}
+.bloc .visuel .num{
+  position:absolute;top:1.2rem;left:1.2rem;z-index:2;
+  font-family:var(--display);font-size:3.4rem;line-height:1;color:var(--jaune);
+  -webkit-text-stroke:1px rgba(0,0,0,.4);
+}
+.bloc .corps{padding:2.6rem;display:flex;flex-direction:column;justify-content:center}
+.bloc .corps .meta{margin-bottom:.8rem}
+.bloc .corps h3{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:2rem;line-height:1.05;margin-bottom:1rem;
+}
+.bloc .corps p{color:var(--encre-douce);margin-bottom:1.6rem}
+.details-wb{
+  display:grid;gap:.6rem;margin-bottom:1.6rem;
+  border-left:2px solid var(--jaune);padding-left:1.2rem;
+}
+.details-wb .d{
+  display:flex;justify-content:space-between;gap:1rem;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.details-wb .d span{color:var(--encre-douce)}
+.details-wb .d b{color:var(--encre);font-weight:400;text-align:right}
+.bloc.inverse{grid-template-columns:.85fr 1.15fr}
+.bloc.inverse .visuel{order:2}
+
+/* ===== Bande photo défilante ===== */
+.strip{display:flex;gap:1.2rem;overflow-x:auto;padding:1rem 0 1.4rem;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--jaune) var(--carbone-2)}
+.strip::-webkit-scrollbar{height:6px}
+.strip::-webkit-scrollbar-thumb{background:var(--jaune)}
+.strip::-webkit-scrollbar-track{background:var(--carbone-2)}
+.strip figure{flex:0 0 72%;scroll-snap-align:center;position:relative;overflow:hidden}
+@media(min-width:700px){.strip figure{flex:0 0 44%}}
+@media(min-width:1000px){.strip figure{flex:0 0 30%}}
+.strip figure img{aspect-ratio:4/3;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.strip figure:hover img{transform:scale(1.05)}
+.strip figcaption{
+  position:absolute;left:0;bottom:0;right:0;
+  padding:.8rem 1rem;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--noir);background:var(--jaune);
+}
+
+/* ===== Processus / itinéraire ===== */
+.process{display:grid;gap:2rem}
+@media(min-width:900px){.process{grid-template-columns:repeat(3,1fr)}}
+.step{
+  position:relative;
+  border:1px solid var(--ligne);background:var(--carbone);
+  padding:2rem 1.8rem;overflow:hidden;
+}
+.step .n{
+  font-family:var(--display);font-size:4.5rem;line-height:.8;color:transparent;
+  -webkit-text-stroke:1px var(--jaune);opacity:.9;
+}
+.step h4{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:1.4rem;margin:.8rem 0 .6rem;
+}
+.step p{color:var(--encre-douce);font-size:.92rem}
+.step::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--jaune);transform:scaleX(0);transform-origin:left;
+  transition:transform .6s cubic-bezier(.22,1,.36,1);
+}
+.step:hover::before{transform:scaleX(1)}
+
+/* ===== Contact ===== */
+.contact{background:var(--carbone);border-top:1px solid var(--ligne)}
 .contact-grid{display:grid;gap:3rem}
 @media(min-width:900px){.contact-grid{grid-template-columns:1fr 1.1fr;gap:5rem}}
-.contact-info h2{font-size:2.2rem;font-weight:500;margin-bottom:1.4rem}
-.contact-info p{color:var(--encre-douce);max-width:44ch}
-.coord{margin-top:2rem;display:grid;gap:1.2rem;border-left:1px solid var(--ligne);padding-left:1.4rem}
-.coord-item strong{
-  display:block;font-weight:500;font-size:.74rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--vert);margin-bottom:.2rem;
+.contact-info h2{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;margin-bottom:1.4rem;
 }
-.coord-item div{font-size:1rem;color:var(--encre)}
-.coord-item a{color:var(--vert-fonce);border-bottom:1px solid transparent;transition:border-color .35s}
-.coord-item a:hover{border-color:var(--vert)}
+.contact-info p{color:var(--encre-douce);max-width:42ch}
+.coord{margin-top:2rem;display:grid;gap:1.2rem}
+.coord-item{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:.9rem 0;border-bottom:1px dashed var(--ligne);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.coord-item span{color:var(--encre-douce)}
+.coord-item b{color:var(--encre);font-weight:400;text-align:right}
+.coord-item a{color:var(--jaune)}
 
-.formulaire{background:var(--blanc);border:1px solid var(--ligne);padding:2.5rem}
-.formulaire h3{font-size:1.6rem;font-weight:500;margin-bottom:.5rem}
-.formulaire .sous{font-size:.9rem;color:var(--encre-douce);margin-bottom:2rem}
+.formulaire{
+  border:1px solid var(--ligne);padding:2.6rem;background:var(--noir);
+  position:relative;
+}
+.formulaire::before{
+  content:"COTATION";position:absolute;top:-14px;right:1.6rem;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;
+  color:var(--noir);background:var(--jaune);padding:.3rem .7rem;
+}
+.formulaire h3{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:1.6rem;margin-bottom:.5rem;
+}
+.formulaire .sous{font-family:var(--mono);font-size:.66rem;color:var(--encre-douce);margin-bottom:2rem;letter-spacing:.04em}
 .champ{margin-bottom:1.4rem}
-.champ label{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--encre-douce);margin-bottom:.4rem;font-weight:400}
+.champ label{
+  display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--encre-douce);margin-bottom:.45rem;
+}
 .champ input,.champ textarea{
-  width:100%;padding:.85rem .95rem;
-  border:1px solid var(--ligne);background:var(--blanc);
-  font-family:var(--sans);font-weight:300;font-size:.98rem;color:var(--encre);
+  width:100%;padding:.85rem 1rem;
+  background:var(--carbone);border:1px solid var(--ligne);color:var(--encre);
+  font-family:var(--sans);font-weight:300;font-size:.98rem;
   transition:border-color .3s;
 }
-.champ input:focus,.champ textarea:focus{outline:none;border-color:var(--vert)}
+.champ input:focus,.champ textarea:focus{outline:none;border-color:var(--jaune)}
 .champ textarea{resize:vertical;min-height:110px}
 .ligne-2{display:grid;gap:1.4rem}
 @media(min-width:600px){.ligne-2{grid-template-columns:1fr 1fr}}
 
-/* ---------- Footer ---------- */
-footer{border-top:1px solid var(--ligne);padding:3rem 0;font-size:.82rem;color:var(--encre-douce)}
-.footer-flex{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap}
-footer strong{color:var(--encre);font-weight:500}
+/* ===== Footer ===== */
+footer{background:var(--noir);border-top:1px solid var(--ligne)}
+.footer-flex{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap;padding:3rem 0}
+.footer-flex .f-bloc{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--encre-douce)}
+.footer-flex b{color:var(--encre);font-weight:400}
 
-/* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
-.revealed{opacity:1;transform:translateY(0)}
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal[data-delay="1"]{transition-delay:.1s}
+.reveal[data-delay="2"]{transition-delay:.2s}
+.reveal[data-delay="3"]{transition-delay:.3s}
+
 @media(prefers-reduced-motion:reduce){
-  .reveal{transition:none;opacity:1;transform:none}
+  .hero-bg img{animation:none}
+  .hero h1 .mot{transform:none;animation:none}
+  .marquee-track{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>N° Lettre de voiture <span class="ref">LV-2026-0847</span></span>
+    <span>Bagnolet · Île-de-France · National</span>
+  </div>
+</div>
+
 <header id="top">
   <div class="container nav">
     <a class="brand" href="#top">
-      <span class="brand-name">A2G Transports</span>
+      <span class="brand-mark">A2G<b>.</b></span>
       <span class="brand-sub">Transport routier de fret</span>
     </a>
     <nav class="nav-links">
       <a href="#activites">Activités</a>
       <a href="#moyens">Moyens</a>
       <a href="#contact">Contact</a>
-      <a href="tel:0605765727" class="nav-tel">06 05 76 57 27</a>
     </nav>
-    <a href="#contact" class="nav-cta">Demander une cotation</a>
+    <a href="#contact" class="nav-cta">Cotation</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-kicker">Transport routier de fret · Île-de-France &amp; national</div>
-    <h1>Acheminement de vos marchandises, sans rupture de charge.</h1>
-    <p class="hero-intro">A2G Transports prend en charge vos palettes, lots et courses dédiées depuis Bagnolet, vers l'Île-de-France et l'ensemble du territoire.</p>
+  <div class="hero-bg"><img src="assets/hero.jpg" alt="Camion sur autoroute"></div>
+  <div class="hero-veil"></div>
+  <div class="container hero-inner">
+    <div class="hero-kicker">Fret interurbain · courses dédiées</div>
+    <h1>
+      <span class="ligne"><span class="mot">Le fret,</span> <span class="mot acc">sans</span></span>
+      <span class="ligne"><span class="mot">rupture</span> <span class="mot acc">de charge.</span></span>
+    </h1>
     <div class="hero-actions">
-      <a href="#contact" class="btn">Demander une cotation</a>
-      <a href="tel:0605765727" class="hero-tel">06 05 76 57 27</a>
+      <a href="#contact" class="btn">Demander une cotation →</a>
+      <a href="tel:0605765727" class="btn btn-ghost">06 05 76 57 27</a>
     </div>
+    <div class="hero-note">Palettes · lots · courses urgentes · navettes B2B</div>
   </div>
 </section>
 
-<div class="bande">
-  <div class="container bande-inner">
-    <span class="bande-label">Nos prestations</span>
-    <ul class="bande-items">
-      <li><a href="#fret">Fret &amp; palettes</a></li>
-      <li><a href="#courses">Courses urgentes</a></li>
-      <li><a href="#tournees">Tournées régulières</a></li>
-    </ul>
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Fret &amp; palettes</span><span>Courses urgentes</span><span>Tournées régulières</span><span>Île-de-France</span><span>National</span><span>Transport direct</span>
+    <span>Fret &amp; palettes</span><span>Courses urgentes</span><span>Tournées régulières</span><span>Île-de-France</span><span>National</span><span>Transport direct</span>
   </div>
 </div>
 
+<section class="section">
+  <div class="container">
+    <div class="manifeste">
+      <div class="manifeste-texte reveal">
+        <div class="section-kicker">Le manifeste</div>
+        <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.2rem)">Un transporteur,<br><span class="acc">une seule mission.</span></h2>
+        <p style="margin-top:1.6rem">A2G Transports achemine vos marchandises depuis Bagnolet vers l'Île-de-France et l'ensemble du territoire. <strong>Direct, sans rupture de charge, sans détour.</strong></p>
+        <p>Palettes, lots, courses dédiées ou navettes récurrentes : chaque chargement est pris en charge et livré à destination, avec la même exigence de ponctualité.</p>
+        <span class="tampon">Direct · Ponctuel</span>
+      </div>
+      <div class="manifeste-side reveal" data-delay="1">
+        <div class="ligne-wb"><span>Expéditeur</span><b>A2G Transports</b></div>
+        <div class="ligne-wb"><span>Départ</span><b>93170 Bagnolet</b></div>
+        <div class="ligne-wb"><span>Destination</span><b>France entière</b></div>
+        <div class="ligne-wb"><span>Régime</span><b>Direct</b></div>
+        <div class="ligne-wb"><span>Disponibilité</span><b>À définir</b></div>
+        <div class="barcode" style="margin-top:1.4rem"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hatch"></div>
+
 <section class="section" id="activites">
   <div class="container">
-    <div class="section-head">
-      <div class="section-kicker">Activités</div>
-      <h2 class="section-title">Des prestations adaptées à vos flux logistiques.</h2>
+    <div class="section-head reveal">
+      <div>
+        <div class="section-kicker">Activités</div>
+        <h2 class="section-title">Trois façons<br>de livrer <span class="acc">juste.</span></h2>
+      </div>
+      <div class="meta">01 — 03</div>
     </div>
 
-    <div class="accompagnement reveal" id="fret">
-      <div class="visuel"><img src="assets/palettes.jpg" alt="Transport de palettes et de fret"></div>
-      <div class="contenu">
+    <div class="bloc reveal" id="fret">
+      <div class="visuel">
+        <span class="num">01</span>
+        <img src="assets/palettes.jpg" alt="Transport de palettes">
+      </div>
+      <div class="corps">
+        <div class="meta">Fret général</div>
         <h3>Fret &amp; palettes</h3>
         <p>Acheminement de marchandises générales et de palettes, standard ou hors gabarit, en région parisienne et sur les axes nationaux.</p>
-        <div class="details">
-          <div><strong>Chargement</strong>Palettes, lots, fret général</div>
-          <div><strong>Zone</strong>Île-de-France &amp; national</div>
+        <div class="details-wb">
+          <div class="d"><span>Chargement</span><b>Palettes · lots · fret général</b></div>
+          <div class="d"><span>Zone</span><b>IDF &amp; national</b></div>
         </div>
-        <span class="a-preciser">Capacités à préciser</span>
+        <a href="#contact" class="btn" style="align-self:flex-start">Coter ce transport →</a>
       </div>
     </div>
 
-    <div class="accompagnement inverse reveal" id="courses">
-      <div class="visuel"><img src="assets/van_express.jpg" alt="Courses urgentes et dédiées"></div>
-      <div class="contenu">
-        <h3>Courses urgentes &amp; dédiées</h3>
+    <div class="bloc inverse reveal" id="courses">
+      <div class="visuel">
+        <span class="num">02</span>
+        <img src="assets/van_express.jpg" alt="Courses urgentes">
+      </div>
+      <div class="corps">
+        <div class="meta">Urgence</div>
+        <h3>Courses dédiées</h3>
         <p>Enlèvement immédiat et livraison directe point à point, pour vos colis critiques, pièces détachées et dépannages urgents.</p>
-        <div class="details">
-          <div><strong>Délai</strong>Prise en charge directe</div>
-          <div><strong>Trajet</strong>Point à point, sans escale</div>
+        <div class="details-wb">
+          <div class="d"><span>Délai</span><b>Prise en charge directe</b></div>
+          <div class="d"><span>Trajet</span><b>Point à point, sans escale</b></div>
         </div>
+        <a href="#contact" class="btn" style="align-self:flex-start">Coter ce transport →</a>
       </div>
     </div>
 
-    <div class="accompagnement reveal" id="tournees">
-      <div class="visuel"><img src="assets/trucks_highway.jpg" alt="Tournées régulières B2B"></div>
-      <div class="contenu">
-        <h3>Tournées &amp; contrats réguliers</h3>
+    <div class="bloc reveal" id="tournees">
+      <div class="visuel">
+        <span class="num">03</span>
+        <img src="assets/trucks_highway.jpg" alt="Tournées régulières">
+      </div>
+      <div class="corps">
+        <div class="meta">Régulier</div>
+        <h3>Tournées &amp; contrats</h3>
         <p>Mise à disposition d'un véhicule avec chauffeur pour vos navettes inter-sites, approvisionnements de magasins ou de chantiers.</p>
-        <div class="details">
-          <div><strong>Engagement</strong>Ponctuel ou récurrent</div>
-          <div><strong>Clientèle</strong>Entreprises &amp; professionnels</div>
+        <div class="details-wb">
+          <div class="d"><span>Engagement</span><b>Ponctuel ou récurrent</b></div>
+          <div class="d"><span>Clientèle</span><b>Entreprises &amp; pros</b></div>
         </div>
+        <a href="#contact" class="btn" style="align-self:flex-start">Coter ce transport →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="moyens">
+<div class="hatch"></div>
+
+<section class="section" id="moyens" style="padding-top:7rem">
   <div class="container">
-    <div class="section-head">
-      <div class="section-kicker">Moyens</div>
-      <h2 class="section-title">Une flotte adaptée au transport de fret.</h2>
-    </div>
-
-    <div class="accompagnement reveal">
-      <div class="visuel"><img src="assets/van_utilitaire.jpg" alt="Fourgon utilitaire"></div>
-      <div class="contenu">
-        <h3>Fourgon utilitaire</h3>
-        <p>Adapté aux livraisons urbaines en centre-ville et aux courses d'urgence.</p>
-        <div class="details">
-          <div><strong>Usage</strong>Livraison urbaine, courses</div>
-        </div>
+    <div class="section-head reveal">
+      <div>
+        <div class="section-kicker">Moyens</div>
+        <h2 class="section-title">La flotte<br><span class="acc">en mouvement.</span></h2>
       </div>
     </div>
+  </div>
 
-    <div class="accompagnement inverse reveal">
-      <div class="visuel"><img src="assets/heavy_truck.jpg" alt="Véhicule grand volume"></div>
-      <div class="contenu">
-        <h3>Grand volume</h3>
-        <p>Destiné aux lots volumineux, déménagements d'entreprises et transports de fret lourd.</p>
-        <div class="details">
-          <div><strong>Usage</strong>Lots volumineux, fret lourd</div>
-        </div>
+  <div class="strip">
+    <figure><img src="assets/hero.jpg" alt="Camion"><figcaption>Poids lourd — axe national</figcaption></figure>
+    <figure><img src="assets/fleet.jpg" alt="Flotte"><figcaption>Flotte en exploitation</figcaption></figure>
+    <figure><img src="assets/warehouse.jpg" alt="Entrepôt"><figcaption>Quai de chargement</figcaption></figure>
+    <figure><img src="assets/loading.jpg" alt="Chargement"><figcaption>Préparation de colis</figcaption></figure>
+    <figure><img src="assets/van-road.jpg" alt="Fourgon"><figcaption>Fourgon — livraison urbaine</figcaption></figure>
+    <figure><img src="assets/heavy_truck.jpg" alt="Grand volume"><figcaption>Grand volume</figcaption></figure>
+  </div>
+
+  <div class="container" style="margin-top:3rem">
+    <div class="process">
+      <div class="step reveal">
+        <div class="n">01</div>
+        <h4>Enlèvement</h4>
+        <p>Prise en charge au lieu convenu, contrôle du chargement et de l'arrimage.</p>
+      </div>
+      <div class="step reveal" data-delay="1">
+        <div class="n">02</div>
+        <h4>Transport</h4>
+        <p>Acheminement direct, sans rupture de charge ni transbordement.</p>
+      </div>
+      <div class="step reveal" data-delay="2">
+        <div class="n">03</div>
+        <h4>Livraison</h4>
+        <p>Remise à destination dans les délais convenus, avec preuve de livraison.</p>
       </div>
     </div>
   </div>
 </section>
+
+<div class="hatch"></div>
 
 <section class="section contact" id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info reveal">
         <div class="section-kicker">Contact</div>
-        <h2>Demander une cotation.</h2>
-        <p>Décrivez votre besoin : nature du chargement, trajet et horaires souhaités. Nous revenons vers vous rapidement.</p>
+        <h2>Parlons<br>de votre <span class="acc">fret.</span></h2>
+        <p>Décrivez votre besoin : nature du chargement, trajet et horaires. Nous revenons vers vous rapidement avec une cotation.</p>
         <div class="coord">
-          <div class="coord-item">
-            <strong>Téléphone</strong>
-            <div><a href="tel:0605765727">06 05 76 57 27</a></div>
-          </div>
-          <div class="coord-item">
-            <strong>Siège</strong>
-            <div>11 rue Sesto Fiorentino, 93170 Bagnolet</div>
-          </div>
-          <div class="coord-item">
-            <strong>Identité</strong>
-            <div>A2G Transports — SASU · SIREN 884 564 154</div>
-          </div>
+          <div class="coord-item"><span>Téléphone</span><b><a href="tel:0605765727">06 05 76 57 27</a></b></div>
+          <div class="coord-item"><span>Siège</span><b>11 rue Sesto Fiorentino, 93170 Bagnolet</b></div>
+          <div class="coord-item"><span>Identité</span><b>SASU · SIREN 884 564 154</b></div>
         </div>
       </div>
 
-      <div class="formulaire">
+      <div class="formulaire reveal" data-delay="1">
         <h3>Demande de cotation</h3>
-        <p class="sous">Les champs marqués d'une étoile sont requis.</p>
+        <p class="sous">Les champs marqués * sont requis.</p>
         <form action="#" method="POST" onsubmit="event.preventDefault();return false;">
           <div class="ligne-2">
-            <div class="champ">
-              <label for="nom">Nom ou société *</label>
-              <input id="nom" type="text" required>
-            </div>
-            <div class="champ">
-              <label for="tel">Téléphone *</label>
-              <input id="tel" type="tel" required>
-            </div>
+            <div class="champ"><label for="nom">Nom ou société *</label><input id="nom" type="text" required></div>
+            <div class="champ"><label for="tel">Téléphone *</label><input id="tel" type="tel" required></div>
           </div>
           <div class="ligne-2">
-            <div class="champ">
-              <label for="depart">Lieu d'enlèvement *</label>
-              <input id="depart" type="text" required>
-            </div>
-            <div class="champ">
-              <label for="arrivee">Lieu de livraison *</label>
-              <input id="arrivee" type="text" required>
-            </div>
+            <div class="champ"><label for="depart">Lieu d'enlèvement *</label><input id="depart" type="text" required></div>
+            <div class="champ"><label for="arrivee">Lieu de livraison *</label><input id="arrivee" type="text" required></div>
           </div>
-          <div class="champ">
-            <label for="msg">Marchandise &amp; impératifs</label>
-            <textarea id="msg" placeholder="Nature du chargement, nombre de palettes, horaires souhaités…"></textarea>
-          </div>
-          <button type="submit" class="btn">Envoyer la demande</button>
+          <div class="champ"><label for="msg">Marchandise &amp; impératifs</label><textarea id="msg" placeholder="Nature du chargement, nombre de palettes, horaires…"></textarea></div>
+          <button type="submit" class="btn">Envoyer la demande →</button>
         </form>
       </div>
     </div>
@@ -375,25 +612,40 @@ footer strong{color:var(--encre);font-weight:500}
 
 <footer>
   <div class="container footer-flex">
-    <div><strong>A2G Transports</strong> — SASU · SIRET 884 564 154 00018 · RCS Bobigny</div>
-    <div>Maquette de démonstration</div>
+    <div class="f-bloc"><b>A2G Transports</b> — SASU · SIRET 884 564 154 00018 · RCS Bobigny</div>
+    <div class="f-bloc">Maquette de démonstration — N° LV-2026-0847</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  const obs = new IntersectionObserver(e => {
-    e.forEach(x => {
-      if(x.isIntersecting){ x.target.classList.add('revealed'); obs.unobserve(x.target) }
-    })
-  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  // Reveal au scroll
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); obs.unobserve(e.target) } })
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
 
+  // Header scroll
   const header = document.querySelector('header');
   window.addEventListener('scroll',()=>{
-    header.classList.toggle('scrolled', window.scrollY > 30);
+    header.classList.toggle('scrolled', window.scrollY > 40);
   },{passive:true});
+
+  // Parallax léger sur les images de blocs
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const parallax = () => {
+      document.querySelectorAll('.bloc .visuel img').forEach(img=>{
+        const r = img.getBoundingClientRect();
+        if(r.bottom < 0 || r.top > window.innerHeight) return;
+        const shift = (r.top + r.height/2 - window.innerHeight/2) * 0.04;
+        img.style.transform = `translateY(${shift}px) scale(1.02)`;
+      });
+    };
+    window.addEventListener('scroll', parallax, {passive:true});
+    parallax();
+  }
 })();
 </script>
 
