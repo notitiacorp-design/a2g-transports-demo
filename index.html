@@ -3,25 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A2G TRANSPORTS — Transport routier de fret & logistique</title>
+  <title>A2G TRANSPORTS — Transport routier de fret</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f17;
-      --bg-card: #131b26;
-      --bg-card-hover: #182332;
-      --border: #222f42;
-      --border-accent: #334b6e;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --accent: #38bdf8;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --badge-bg: rgba(56, 189, 248, 0.1);
-      --badge-border: rgba(56, 189, 248, 0.25);
+      --bg: #0f1115;
+      --bg-surface: #161920;
+      --bg-subtle: #1c212b;
+      --border: #262c38;
+      --border-focus: #3b4457;
+      --text: #f1f3f7;
+      --text-muted: #8e99ac;
+      --text-dim: #5a6475;
+      --accent: #e2e8f0;
     }
 
     * {
@@ -33,632 +29,392 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
 
-    /* Top banner */
-    .top-bar {
-      background: #080b10;
-      border-bottom: 1px solid var(--border);
-      padding: 8px 0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .top-bar-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .top-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Navbar */
+    /* En-tête */
     header {
-      background: rgba(11, 15, 23, 0.85);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      padding: 36px 0;
       border-bottom: 1px solid var(--border);
     }
-    .nav-wrap {
+    .header-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      height: 72px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-    .brand {
-      display: flex;
-      flex-direction: column;
-    }
-    .logo-text {
-      font-size: 20px;
-      font-weight: 800;
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: #fff;
     }
-    .logo-sub {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      font-weight: 600;
+    .brand-tag {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 2px;
+      letter-spacing: 0.04em;
     }
-    .nav-cta {
+    .header-contact {
       display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .phone-link {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
+      gap: 24px;
       font-size: 14px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
+      font-weight: 400;
     }
-    .btn-primary {
-      background: var(--primary);
+    .header-contact a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-contact a:hover {
       color: #fff;
     }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-    .btn-outline {
-      background: transparent;
-      border-color: var(--border-accent);
-      color: var(--text);
-    }
-    .btn-outline:hover {
-      background: var(--bg-card);
-    }
 
-    /* Hero */
+    /* Hero sobre */
     .hero {
       padding: 80px 0 60px;
-      position: relative;
     }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      border-radius: 999px;
+    .hero-label {
       font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 24px;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: clamp(34px, 5vw, 54px);
-      font-weight: 800;
-      line-height: 1.15;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 600;
+      line-height: 1.2;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      max-width: 850px;
+      color: #fff;
+      max-width: 780px;
+      margin-bottom: 28px;
     }
-    .hero h1 span {
-      color: var(--accent);
-    }
-    .hero-lead {
-      font-size: 18px;
+    .hero p {
+      font-size: 17px;
       color: var(--text-muted);
-      max-width: 680px;
-      margin-bottom: 36px;
+      max-width: 620px;
+      margin-bottom: 40px;
     }
-    .hero-actions {
+    .hero-meta {
       display: flex;
-      gap: 16px;
+      gap: 36px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-
-    /* Key stats / trust */
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      padding-top: 28px;
       border-top: 1px solid var(--border);
-      padding-top: 32px;
     }
-    .trust-item {
+    .meta-col {
       display: flex;
       flex-direction: column;
     }
-    .trust-val {
-      font-size: 20px;
-      font-weight: 700;
+    .meta-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
       color: #fff;
     }
-    .trust-lbl {
-      font-size: 13px;
+    .meta-lbl {
+      font-size: 12px;
       color: var(--text-dim);
     }
 
-    /* Section header */
+    /* Sections */
     .section {
-      padding: 80px 0;
+      padding: 64px 0;
       border-top: 1px solid var(--border);
     }
     .section-head {
-      margin-bottom: 48px;
+      margin-bottom: 36px;
     }
-    .section-tag {
+    .section-num {
       font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-dim);
       margin-bottom: 8px;
     }
     .section-title {
-      font-size: 32px;
-      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
       letter-spacing: -0.02em;
     }
 
-    /* Services Grid */
-    .grid-3 {
+    /* Grilles sobres */
+    .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-    }
-    .card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
-    }
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #fff;
-    }
-    .card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    .card-placeholder-badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.05);
-      border: 1px dashed var(--border-accent);
-      color: var(--accent);
-      margin-top: auto;
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    /* Flotte / Véhicules */
-    .fleet-card {
-      background: var(--bg-card);
+    .block {
+      background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
+      padding: 28px;
+      border-radius: 4px;
     }
-    .fleet-placeholder-img {
-      height: 180px;
-      background: #0d141e;
-      border-bottom: 1px solid var(--border);
+    .block h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .block p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .placeholder-tag {
+      margin-top: 16px;
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 6px;
+      border: 1px dashed var(--border-focus);
+      color: var(--text-dim);
+    }
+
+    /* Visuels épurés */
+    .visual-slot {
+      height: 160px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       color: var(--text-dim);
-      font-size: 13px;
+      font-size: 12px;
       text-align: center;
-      padding: 16px;
-    }
-    .fleet-body {
-      padding: 24px;
-    }
-    .fleet-body h4 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .fleet-specs {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .fleet-specs li {
-      padding: 4px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    /* Zone & Contact Form */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    .contact-info h3 {
-      font-size: 24px;
-      font-weight: 700;
       margin-bottom: 16px;
     }
-    .contact-info p {
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      font-size: 15px;
-    }
-    .info-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .info-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 16px 20px;
-      border-radius: 8px;
-    }
-    .info-box-label {
-      font-size: 12px;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .info-box-val {
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      margin-top: 2px;
-    }
 
-    /* Form */
-    .form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-accent);
-      border-radius: 12px;
-      padding: 32px;
-    }
-    .form-card h4 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .form-card p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 24px;
-    }
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: var(--text-muted);
-    }
-    .form-control {
-      width: 100%;
-      padding: 12px 14px;
-      background: #0d141e;
+    /* Formulaire épuré */
+    .form-box {
+      background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      padding: 32px;
+      border-radius: 4px;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .field {
+      margin-bottom: 16px;
+    }
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
       color: #fff;
       font-family: inherit;
       font-size: 14px;
     }
-    .form-control:focus {
+    .field input:focus, .field textarea:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--border-focus);
     }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .btn-submit {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
     }
 
-    /* Footer */
+    /* Pied de page */
     footer {
       border-top: 1px solid var(--border);
       padding: 40px 0;
-      background: #080b10;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-dim);
     }
-    .footer-content {
+    .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
 
     @media (max-width: 768px) {
-      .contact-layout {
+      .grid-2, .grid-3, .field-row {
         grid-template-columns: 1fr;
-      }
-      .nav-cta .phone-link {
-        display: none;
-      }
-      .hero {
-        padding: 50px 0 40px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar info -->
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <div class="top-bar-item">📍 Siège : 11 Rue Sesto Fiorentino, 93170 Bagnolet | Île-de-France & National</div>
-      <div class="top-bar-item">📞 Contact direct : 06 05 76 57 27</div>
-    </div>
-  </div>
-
-  <!-- Header -->
   <header>
-    <div class="container nav-wrap">
-      <div class="brand">
-        <span class="logo-text">A2G TRANSPORTS</span>
-        <span class="logo-sub">Transport Routier de Fret</span>
+    <div class="container header-inner">
+      <div>
+        <div class="brand-title">A2G TRANSPORTS</div>
+        <div class="brand-tag">SASU • SIREN 884 564 154 • Siège : 11 Rue Sesto Fiorentino, 93170 Bagnolet</div>
       </div>
-      <div class="nav-cta">
-        <a href="tel:0605765727" class="phone-link">
-          <span>06 05 76 57 27</span>
-        </a>
-        <a href="#devis" class="btn btn-primary">Demander un devis</a>
+      <div class="header-contact">
+        <a href="tel:0605765727">Tél : 06 05 76 57 27</a>
+        <a href="#devis">Demande de cotation</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="badge">Transport & Logistique B2B / Particuliers</div>
-      <h1>Votre partenaire de confiance pour le <span>transport de marchandises</span> et fret routier.</h1>
-      <p class="hero-lead">
-        A2G TRANSPORTS assure l'acheminement sécurisé et rapide de vos chargements en Île-de-France et sur toute la France. Disponibilité, ponctualité et suivi rigoureux.
-      </p>
-      <div class="hero-actions">
-        <a href="#devis" class="btn btn-primary">Demande de cotation express</a>
-        <a href="tel:0605765727" class="btn btn-outline">Appeler maintenant</a>
-      </div>
+  <main class="container">
 
-      <div class="trust-grid">
-        <div class="trust-item">
-          <span class="trust-val">Région IDF & France</span>
-          <span class="trust-lbl">Zone de couverture</span>
+    <section class="hero">
+      <div class="hero-label">Transport routier de fret interurbain & logistique</div>
+      <h1>Acheminement de marchandises et solutions de transport en Île-de-France et sur le territoire national.</h1>
+      <p>Prise en charge de lots, palettes et courses dédiées pour les entreprises et professionnels. Ponctualité, réactivité et suivi direct.</p>
+      
+      <div class="hero-meta">
+        <div class="meta-col">
+          <span class="meta-val">Bagnolet (93)</span>
+          <span class="meta-lbl">Base de départ</span>
         </div>
-        <div class="trust-item">
-          <span class="trust-val">SAS Enregistrée</span>
-          <span class="trust-lbl">SIREN : 884 564 154</span>
+        <div class="meta-col">
+          <span class="meta-val">IDF & France</span>
+          <span class="meta-lbl">Rayon d'intervention</span>
         </div>
-        <div class="trust-item">
-          <span class="trust-val">Réactivité 7j/7</span>
-          <span class="trust-lbl">Disponibilité interventions</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-val">Sur-mesure</span>
-          <span class="trust-lbl">Courses dédiées & régulières</span>
+        <div class="meta-col">
+          <span class="meta-val">Direct sans intermédiaire</span>
+          <span class="meta-lbl">Gestion des courses</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <div class="container">
+    <!-- Services -->
+    <section class="section" id="services">
       <div class="section-head">
-        <div class="section-tag">Prestations</div>
-        <h2 class="section-title">Solutions de transport adaptées à vos impératifs</h2>
+        <div class="section-num">01 / Activités</div>
+        <h2 class="section-title">Prestations de transport</h2>
       </div>
 
       <div class="grid-3">
-        <div class="card">
-          <div>
-            <h3>Transport de fret & marchandises</h3>
-            <p>Acheminement de vos palettes, colis volumineux et marchandises générales en courte et moyenne distance avec un respect strict des délais.</p>
-          </div>
-          <span class="card-placeholder-badge">Détails types de chargements à affiner</span>
+        <div class="block">
+          <h3>Fret & Palettes</h3>
+          <p>Transport de marchandises générales et palettes en courte ou moyenne distance.</p>
+          <div class="placeholder-tag">Volume et tonnage exacts à préciser</div>
         </div>
 
-        <div class="card">
-          <div>
-            <h3>Courses urgentes & express</h3>
-            <p>Prise en charge dédiée pour vos envois critiques sans rupture de charge. Enlèvement immédiat et livraison directe au destinataire.</p>
-          </div>
-          <span class="card-placeholder-badge">Délai moyen d'enlèvement à préciser</span>
+        <div class="block">
+          <h3>Courses dédiées & Urgences</h3>
+          <p>Enlèvement direct et livraison sans rupture de charge pour vos impératifs horaires.</p>
+          <div class="placeholder-tag">Délais d'intervention à définir</div>
         </div>
 
-        <div class="card">
-          <div>
-            <h3>Tournées régulières & contrats B2B</h3>
-            <p>Mise à disposition de véhicules avec chauffeur pour vos flux logistiques réguliers, approvisionnements de chantiers ou distribution commerciale.</p>
-          </div>
-          <span class="card-placeholder-badge">Modalités contractuelles à valider</span>
+        <div class="block">
+          <h3>Tournées régulières</h3>
+          <p>Mise à disposition de véhicule avec chauffeur pour flux récurrents ou contrats B2B.</p>
+          <div class="placeholder-tag">Conditions contractuelles à valider</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Flotte & Moyens -->
-  <section class="section">
-    <div class="container">
+    <!-- Véhicules -->
+    <section class="section">
       <div class="section-head">
-        <div class="section-tag">Flotte & Équipements</div>
-        <h2 class="section-title">Des véhicules entretenus et adaptés</h2>
+        <div class="section-num">02 / Moyens</div>
+        <h2 class="section-title">Flotte & Équipements</h2>
       </div>
 
-      <div class="grid-3">
-        <div class="fleet-card">
-          <div class="fleet-placeholder-img">
-            [Photo du véhicule — à fournir]<br>
-            <span style="font-size:11px; opacity:0.7">Fourgon / Utilitaire</span>
-          </div>
-          <div class="fleet-body">
-            <h4>Utilitaire Express (ex: 12-14m³)</h4>
-            <ul class="fleet-specs">
-              <li>• Charge utile : [À préciser]</li>
-              <li>• Capacité palettes : [À préciser]</li>
-              <li>• Idéal pour courses urbaines & urgences</li>
-            </ul>
-          </div>
+      <div class="grid-2">
+        <div class="block">
+          <div class="visual-slot">[Photo du véhicule utilitaire — à fournir]</div>
+          <h3>Fourgon utilitaire</h3>
+          <p>Adapté aux livraisons urbaines, courses express et transferts de palettes légères.</p>
+          <div class="placeholder-tag">Dimensions utiles & charge max à renseigner</div>
         </div>
 
-        <div class="fleet-card">
-          <div class="fleet-placeholder-img">
-            [Photo du véhicule — à fournir]<br>
-            <span style="font-size:11px; opacity:0.7">Grand Volume / Hayon</span>
-          </div>
-          <div class="fleet-body">
-            <h4>Fourgon Grand Volume (ex: 20m³)</h4>
-            <ul class="fleet-specs">
-              <li>• Équipement avec ou sans hayon</li>
-              <li>• Manutention facilitée (transpalette, sangles)</li>
-              <li>• Transport de lots et déménagements pro</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fleet-card">
-          <div class="fleet-placeholder-img">
-            [Photo ou Schéma — à fournir]<br>
-            <span style="font-size:11px; opacity:0.7">Zone d'intervention</span>
-          </div>
-          <div class="fleet-body">
-            <h4>Rayon d'action étendu</h4>
-            <ul class="fleet-specs">
-              <li>• Départ : Seine-Saint-Denis (93) / Paris / IDF</li>
-              <li>• Liaisons directes province sur demande</li>
-              <li>• Traçabilité et confirmation de livraison</li>
-            </ul>
-          </div>
+        <div class="block">
+          <div class="visual-slot">[Photo du grand volume / hayon — à fournir]</div>
+          <h3>Grand volume</h3>
+          <p>Pour lots volumineux, déménagements d'entreprises ou acheminements régionaux.</p>
+          <div class="placeholder-tag">Capacité (m³) à confirmer</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact & Devis -->
-  <section class="section" id="devis">
-    <div class="container">
-      <div class="contact-layout">
-        
-        <div class="contact-info">
-          <div class="section-tag">Contact direct</div>
-          <h3>Besoin d'un transporteur réactif ?</h3>
-          <p>
-            Remplissez le formulaire de cotation pour obtenir une réponse rapide, ou contactez directement notre équipe par téléphone pour une intervention immédiate.
-          </p>
+    <!-- Devis -->
+    <section class="section" id="devis">
+      <div class="section-head">
+        <div class="section-num">03 / Devis</div>
+        <h2 class="section-title">Demande de cotation rapide</h2>
+      </div>
 
-          <div class="info-list">
-            <div class="info-box">
-              <div class="info-box-label">Téléphone / WhatsApp</div>
-              <div class="info-box-val"><a href="tel:0605765727" style="color:#fff; text-decoration:none;">06 05 76 57 27</a></div>
+      <div class="form-box">
+        <form action="#" method="POST" onsubmit="event.preventDefault();">
+          <div class="field-row">
+            <div class="field">
+              <label>Entreprise / Nom</label>
+              <input type="text" placeholder="Nom du contact ou société">
             </div>
-
-            <div class="info-box">
-              <div class="info-box-label">Email professionnel</div>
-              <div class="info-box-val">[contact@a2gtransports.fr — à configurer]</div>
-            </div>
-
-            <div class="info-box">
-              <div class="info-box-label">Siège social</div>
-              <div class="info-box-val">11 Rue Sesto Fiorentino, 93170 Bagnolet</div>
+            <div class="field">
+              <label>Téléphone</label>
+              <input type="tel" placeholder="06 .. .. .. ..">
             </div>
           </div>
-        </div>
-
-        <!-- Formulaire de devis -->
-        <div class="form-card">
-          <h4>Demande de cotation rapide</h4>
-          <p>Recevez une proposition tarifaire pour votre course ou transport.</p>
-
-          <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Maquette de démonstration : le formulaire sera relié directement à votre boîte mail.');">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Nom ou Entreprise *</label>
-                <input type="text" class="form-control" placeholder="Ex: Société Dupont" required>
-              </div>
-              <div class="form-group">
-                <label>Téléphone *</label>
-                <input type="tel" class="form-control" placeholder="06 .. .. .. .." required>
-              </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Lieu d'enlèvement (CP / Ville)</label>
+              <input type="text" placeholder="Ex: 93170 Bagnolet">
             </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Lieu de départ (Ville ou CP) *</label>
-                <input type="text" class="form-control" placeholder="Ex: 93170 Bagnolet" required>
-              </div>
-              <div class="form-group">
-                <label>Lieu d'arrivée (Ville ou CP) *</label>
-                <input type="text" class="form-control" placeholder="Ex: 69000 Lyon" required>
-              </div>
+            <div class="field">
+              <label>Lieu de livraison (CP / Ville)</label>
+              <input type="text" placeholder="Ex: 69000 Lyon">
             </div>
-
-            <div class="form-group">
-              <label>Type de marchandise & Détails</label>
-              <textarea class="form-control" rows="3" placeholder="Volume estimé, nombre de palettes, impératifs d'horaires..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width:100%; padding: 14px;">Envoyer ma demande de devis</button>
-          </form>
-        </div>
-
+          </div>
+          <div class="field">
+            <label>Nature du chargement & impératifs</label>
+            <textarea rows="3" placeholder="Description des marchandises, nombre de palettes, contraintes d'accès..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Demander une cotation</button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+  </main>
+
   <footer>
-    <div class="container footer-content">
-      <div>
-        <strong>A2G TRANSPORTS</strong> — SASU au capital social déclaré • SIREN : 884 564 154 • RCS Bobigny
-      </div>
-      <div>
-        Brouillon de présentation préparé pour Lounès T.
-      </div>
+    <div class="container footer-inner">
+      <div>A2G TRANSPORTS — SASU • SIRET 88456415400018 • Bagnolet</div>
+      <div>Brouillon de cadrage préparé pour Lounès T.</div>
     </div>
   </footer>
 
